@@ -1,0 +1,11 @@
+# WebStorm IDE
+.idea/
+*.iml
+
+# emacs auto-saving files
+\#*#
+.#*#
+.#*
+
+# System Temp Files
+.DS_Store
