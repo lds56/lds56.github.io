@@ -35,13 +35,19 @@
     overflow:hidden;
   }
 
-  .ui.statistic.at-center {
+  .text-center {
+    text-align: center;
+  }
+
+  .ui.small.circular.image.at-center {
     display: block;
     margin: 0 auto;
   }
-  .label.at-center {
-    display: block;
-    margin: 0 auto;
+
+  .ui.transparent-seg {
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: 0px 0px 0px 0px;
+    padding: 0em 0em;
   }
 
 </style>
@@ -80,9 +86,9 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li><a href="./basicinfo.html">个人信息</a></li>
-            <li><a href="./info-manage.html">信息管理</a></li>
+            <li class="active"><a href="./info-manage.html">信息管理</a></li>
             <li><a href="./permission.html">权限管理<span class="sr-only">(current)</span></a></li>
-            <li class="active"><a href="#">系统信息</a></li>
+            <li><a href="#">系统信息</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href=""></a></li>
@@ -97,95 +103,107 @@
             <li><a href=""></a></li>
           </ul>
         </div>
+
+
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-          <div class="row">
 
-            <div class="col-xs-6 col-sm-2 placeholder">
+          <div class="col-xs-6 col-sm-6 huge-placeholder">
 
-              <div class="ui statistic at-center">
-                <div class="label at-center">
-                  Date
+            <h2 class="sub-header">信息管理</h2>
+
+          </div>
+
+          <div class="col-xs-6 col-sm-6 huge-placeholder">
+
+            <!--h2 class="ui header">Search</h2-->
+
+            <div class="ui action left icon input placeholder transparent-seg right floated segment" style="
+              margin-right: 2rem;
+            ">
+              <i class="search icon" style="
+    left: auto;
+"></i>
+              <input type="text" placeholder="Search...">
+              <div class="ui teal button">Search</div>
+            </div>
+
+            <div class="ui hidden divider"></div>
+            <div class="ui hidden divider"></div>
+
+            <div class="ui form transparent-seg right floated segment">
+              <div class="inline fields">
+
+                <div class="field">
+                  <div class="ui radio checkbox checked">
+                    <input type="radio" name="fruit" checked="checked">
+                    <label>Search Courses</label>
+                  </div>
                 </div>
 
-                <div class="text value">
-                  5/14
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="fruit">
+                    <label>Search Students</label>
+                  </div>
                 </div>
+
+
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="fruit">
+                    <label>Search Teachers</label>
+                  </div>
+                </div>
+
               </div>
+            </div>
 
+          </div>
+
+            <div class="row placeholder">
+
+            <div class="col-xs-4 col-sm-3 placeholder">
+
+              <div class="text-center at-center">
+              <img class="ui small circular image at-center" src="./images/student.png">
+              <p>Add Student</p>
+                </div>
 
             </div>
 
-            <div class="col-xs-6 col-sm-2 placeholder">
+            <div class="col-xs-4 col-sm-3 placeholder">
 
-              <div class="ui statistic at-center">
-                <div class="label at-center">
-                  Time
-                </div>
-                <div class="text value">
-                  09:35
-                </div>
-              </div>
-
-            </div>
-
-            <div class="col-xs-6 col-sm-2 placeholder">
-
-              <div class="ui statistic at-center">
-                <div class="label at-center">
-                  Running
-                </div>
-                <div class="text value">
-                  1400 h
-                </div>
-              </div>
-
-
-            </div>
-
-
-            <div class="col-xs-6 col-sm-2 placeholder">
-
-              <div class="ui statistic at-center">
-                <div class="label at-center">
-                  Error
-                </div>
-                <div class="text value">
-                  <i class="remove circle icon"></i> 2
-                </div>
-              </div>
-
-            </div>
-            <div class="col-xs-6 col-sm-2 placeholder">
-
-              <div class="ui statistic at-center">
-                <div class="label at-center">
-                  Warning
-                </div>
-                <div class="text value">
-                  <i class="warning circle icon"></i> 3
-                </div>
+              <div class="text-center at-center">
+                <img class="ui small circular image at-center disabled" src="./images/teacher.png">
+                <p>Add Teacher</p>
               </div>
 
             </div>
 
 
-            <div class="col-xs-6 col-sm-2 placeholder at-center">
+            <div class="col-xs-4 col-sm-3 placeholder">
 
-              <div class="ui statistic at-center">
-                <div class="label at-center">
-                  Info
-                </div>
-                <div class="text value">
-                  <i class="info circle icon"></i> 3
-                </div>
+              <div class="text-center at-center">
+                <img class="ui small circular image at-center" src="./images/validate.jpg">
+                <p>Check course</p>
+              </div>
+
+            </div>
+
+
+            <div class="col-xs-4 col-sm-3 placeholder">
+
+              <div class="text-center at-center">
+                <img class="ui small circular image at-center" src="./images/book.jpg">
+                <p>Add course</p>
               </div>
 
             </div>
 
           </div>
 
-          <div class="col-xs-6 col-sm-6 placeholder">
+          <!--div class="col-xs-6 col-sm-6 placeholder">
 
             <h2 class="sub-header">日志纪录</h2>
 
@@ -306,49 +324,7 @@
             </tr>
 
             </tbody>
-          </table>
-
-
-          <!--div class="ui menu">
-            <a class="item">
-              Home
-            </a>
-            <div class="ui pointing dropdown link item" tabindex="-1">
-              <i class="dropdown icon" tabindex="0"></i>
-              <span class="text">Shopping</span>
-              <div class="menu" tabindex="-1">
-                <div class="header">Categories</div>
-                <div class="item">
-                  <i class="dropdown icon" tabindex="0"></i>
-                  <span class="text">Clothing</span>
-                  <div class="menu">
-                    <div class="header">Mens</div>
-                    <div class="item">Shirts</div>
-                    <div class="item">Pants</div>
-                    <div class="item">Jeans</div>
-                    <div class="item">Shoes</div>
-                    <div class="divider"></div>
-                    <div class="header">Womens</div>
-                    <div class="item">Dresses</div>
-                    <div class="item">Shoes</div>
-                    <div class="item">Bags</div>
-                  </div>
-                </div>
-                <div class="item">Home Goods</div>
-                <div class="item">Bedroom</div>
-                <div class="divider"></div>
-                <div class="header">Order</div>
-                <div class="item">Status</div>
-                <div class="item">Cancellations</div>
-              </div>
-            </div>
-            <a class="item">
-              Forums
-            </a>
-            <a class="item">
-              Contact Us
-            </a>
-          </div-->
+          </table-->
 
         </div>
       </div>
