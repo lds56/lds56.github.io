@@ -1,19 +1,21 @@
 
 
 <link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
+
 <dom-module id="post-1">
 
 
     <link rel="import" type="css" href="posts.css" />
     <link rel="stylesheet" href="md-base.css" />
 
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!--<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>-->
 
     <template>
 
-        <paper-material evlevation="3">
+        <paper-material elevation="3">
 
-            <div class="md-body">
+            <div class$="{{mdBody}}">
                 <h1>Note</h1>
                 <h3 id="postgresql">PostgreSQL</h3>
 
@@ -351,15 +353,34 @@
 
             </div>
         </paper-material>
+
+        <iron-media-query query="(max-width: 780px)" query-matches="{{_isMobile}}"></iron-media-query>
+
     </template>
+
+
+    <script>
+
+        Polymer({
+
+            is: 'post-1',
+
+            properties: {
+
+                _isMobile: {
+                    type: Boolean,
+                    observer: '_isMobileChanged'
+                }
+
+            },
+
+            _isMobileChanged: function(isMobile) {
+                this.mdBody = isMobile ? 'md-body' : 'md-body with-margin';
+                console.log(this.mdBody);
+            }
+
+        });
+
+    </script>
+
 </dom-module>
-
-<script>
-
-    Polymer({
-
-        is: 'post-1'
-
-    });
-
-</script>

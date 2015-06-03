@@ -20,6 +20,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../bower_components/paper-menu/paper-menu.html">
 <link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
 
 <link rel="import" href="../posts/post-1.html">
 
@@ -36,21 +37,30 @@ Extended Header + List Left + Card Over Toolbar
 
     <paper-drawer-panel id="drawerPanel" responsive-width="1024px" drawer-width="{{drawerWidth}}">
 
-      <paper-header-panel class="list-panel" drawer mode="seamed">
+      <paper-header-panel class="list-panel" drawer mode="waterfall">
 
         <!-- List Toolbar -->
 
-        <paper-toolbar class$="{{toolbarClass}}">
-          <iron-image class="top" style="width:100px; height:100px; margin-left: 56px; margin-top: 81px;" sizing="contain" src="../images/profile.png"></iron-image>
-          <div title class="bottom">LDS' Page</div>
+        <paper-toolbar class="tall">
+          <iron-image class="profile top" sizing="contain" src="../images/profile.png"></iron-image>
+          <!--<div title class="bottom">LDS' Page</div>-->
+            <paper-tabs class="bottom self-end" selected="{{selected}}" style="width: 100%;">
+              <paper-tab>Posts</paper-tab>
+              <paper-tab>Demos</paper-tab>
+              <paper-tab>Info</paper-tab>
+            </paper-tabs>
         </paper-toolbar>
 
         <!-- List -->
         <paper-menu class="list" on-iron-activate="_listTap">
           <paper-item>
-            <div class="sub-title">
-              <p>Note</p>
-            </div>
+            <div class="sub-title">Show your status</div>
+            <!--paper-item-body two-line style="
+              width: 100%;
+            ">
+              <div class="sub-title">Show your status</div>
+              <div secondary class="sub-title date-title">2015/5/10 13:43</div>
+            </paper-item-body-->
           </paper-item>
           <paper-item></paper-item>
           <paper-item></paper-item>
@@ -79,7 +89,7 @@ Extended Header + List Left + Card Over Toolbar
 
         <!-- Main Toolbar -->
         <paper-toolbar class$="{{toolbarClass}}">
-          <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+          <paper-icon-button icon="arrow-back" paper-drawer-toggle></paper-icon-button>
         </paper-toolbar>
 
         <div class="content">
@@ -116,7 +126,7 @@ Extended Header + List Left + Card Over Toolbar
       },
 
       _isMobileChanged: function(isMobile) {
-        this.mainMode = isMobile ? 'seamed' : 'cover';
+        this.mainMode = isMobile ? 'standard' : 'cover';
         this.drawerWidth = isMobile ? '100%' : '320px';
         this.toolbarClass = isMobile ? '' : 'tall';
         this.updateStyles();
