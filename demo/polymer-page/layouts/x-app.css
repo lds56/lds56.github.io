@@ -67,3 +67,7 @@ paper-material {
   margin-left: auto;
   margin-right: auto;
 }
+
+.paper-menu > .iron-selected {
+  color: #00BCD4;
+}

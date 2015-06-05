@@ -22,7 +22,9 @@
     "paper-toggle-button": "polymerelements/paper-toggle-button#^1.0.0",
     "paper-toolbar": "polymerelements/paper-toolbar#^1.0.0",
     "paper-tabs": "polymerelements/paper-tabs#^1.0.0",
-    "iron-image": "polymerelements/iron-image#^1.0.0"
+    "iron-image": "polymerelements/iron-image#^1.0.0",
+    "neon-animation": "polymerElements/neon-animation#^1.0.0",
+    "page": "visionmedia/page.js#~1.6.3"
   },
   "ignore": [
     "**/.*",

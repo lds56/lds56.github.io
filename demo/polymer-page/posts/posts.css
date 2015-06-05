@@ -21,3 +21,7 @@ paper-material {
 .md-body.with-margin {
   margin: 80px 40px 80px 40px;
 }
+
+:host {
+  display: inline-block;
+}
