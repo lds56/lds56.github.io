@@ -31,7 +31,7 @@ Configuration:
 
   Polymer({
 
-    is: 'slide-up-show-animation',
+    is: 'slide-down-remove-animation',
 
     behaviors: [
       Polymer.NeonAnimationBehavior
@@ -47,8 +47,8 @@ Configuration:
       }
 
       this._effect = new KeyframeEffect(node, [
-        {'transform': 'translateY(5%)', 'opacity': '0'},
-        {'transform': 'translateY(0)', 'opacity': '1'}
+        {'transform': 'translateY(0)', 'opacity': '1'},
+        {'transform': 'translateY(5%)', 'opacity': '0'}
       ], this.timingFromConfig(config));
 
       return this._effect;

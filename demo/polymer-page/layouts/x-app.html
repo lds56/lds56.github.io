@@ -169,9 +169,13 @@ Extended Header + List Left + Card Over Toolbar
         var cnt = document.getElementById('postContent');
         var child = cnt.childNodes[1];
         var newChild = document.createElement('post-' + _selectMenu);
-        cnt.replaceChild(newChild, child);
 
-        newChild.animate();
+        child.removeIt();
+        setTimeout(function() {
+          cnt.replaceChild(newChild, child);
+        }, 400);
+        //while (!child.isOver);
+        newChild.showIt();
 
         console.log(_selectMenu);
       }

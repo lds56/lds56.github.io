@@ -7,6 +7,7 @@
 
 
 <link rel="import" href="../utils/slide-up-show-animation.html">
+<link rel="import" href="../utils/slide-down-remove-animation.html">
 
 <dom-module id="post-0">
 
@@ -387,10 +388,17 @@
                 type: Object,
                 value: function() {
                     return {
-                        // provided by neon-animation/animations/scale-down-animation.html
-                        name: 'slide-up-show-animation',
-                        node: this,
-                        timing: {duration: 500}
+                        'entry': [{
+                            // provided by neon-animation/animations/scale-down-animation.html
+                            name: 'slide-up-show-animation',
+                            node: this,
+                            timing: {delay: 100, duration: 900}
+                        }],
+                        'exit': [{
+                            name: 'slide-down-remove-animation',
+                            node: this,
+                            time: {duration: 800}
+                        }]
                     }
                 }
             }
@@ -402,10 +410,16 @@
             'neon-animation-finish': '_onNeonAnimationFinish'
         },
 
-        animate: function() {
+        showIt: function() {
             // run scale-down-animation
-            console.log('animation start!');
-            this.playAnimation();
+            console.log('show animation start!');
+            this.playAnimation('entry');
+        },
+
+        removeIt: function() {
+            // run scale-down-animation
+            console.log('exit animation start!');
+            this.playAnimation('exit');
         },
 
         _onNeonAnimationFinish: function() {
