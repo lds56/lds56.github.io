@@ -1,0 +1,77 @@
+
+<link rel="import" href="../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
+
+<dom-module id="demo-0">
+    <link rel="import" type="css" href="demos.css" />
+
+    <template>
+
+        <div id="wrap" data-view$="{{viewMode}}">
+          <div id="left_col" data-view$="{{viewMode}}">
+            <paper-material elevation="3" class="paper-info" style="height: 300px;">
+              <iron-image class="background" sizing="cover" src="../images/background.jpg"></iron-image>
+            </paper-material>
+              <paper-material elevation="3" class="paper-info" style="height: 100px">
+                <iron-image class="background" sizing="cover" src="../images/page-1.png"></iron-image>
+                </paper-material>
+                <paper-material elevation="3" class="paper-info" style="height: 450px;">
+                  <iron-image class="background" sizing="cover" src="../images/background.jpg"></iron-image>
+            </paper-material>
+            <paper-material elevation="3" class="paper-info" style="height: 150px">
+              <iron-image class="background" sizing="cover" src="../images/page-1.png"></iron-image>
+            </paper-material>
+            <paper-material elevation="3" class="paper-info" style="height: 200px;">
+              <iron-image class="background" sizing="cover" src="../images/background.jpg"></iron-image>
+            </paper-material>
+            <paper-material elevation="3" class="paper-info" style="height: 200px">
+              <iron-image class="background" sizing="cover" src="../images/page-1.png"></iron-image>
+            </paper-material>
+          </div>
+          <div id="right_col" data-view$="{{viewMode}}">
+            <paper-material elevation="3" class="paper-info" style="height: 200px">
+              <iron-image class="background" sizing="cover" src="../images/page-1.png"></iron-image>
+            </paper-material>
+            <paper-material elevation="3" class="paper-info" style="height: 400px;">
+              <iron-image class="background" sizing="cover" src="../images/background.jpg"></iron-image>
+              </paper-material>
+              <paper-material elevation="3" class="paper-info" style="height: 350px">
+                <iron-image class="background" sizing="cover" src="../images/page-1.png"></iron-image>
+            </paper-material>
+            <paper-material elevation="3" class="paper-info" style="height: 500px;">
+              <iron-image class="background" sizing="cover" src="../images/background.jpg"></iron-image>
+            </paper-material>
+          </div>
+        </div>
+
+        <paper-fab class="yellow octo-fab" data-view$="{{viewMode}}" src="../images/octocat-b.png"></paper-fab>
+
+        <iron-media-query query="(max-width: 780px)" query-matches="{{_isMobile}}"></iron-media-query>
+    </template>
+</dom-module>
+
+
+<script>
+
+    Polymer({
+
+        is: 'demo-0',
+
+        properties: {
+
+            _isMobile: {
+                type: Boolean,
+                observer: '_isMobileChanged'
+            }
+        },
+
+        _isMobileChanged: function(isMobile) {
+            this.viewMode = isMobile ? 'narrow' : 'wide';
+        }
+
+
+    });
+
+</script>
