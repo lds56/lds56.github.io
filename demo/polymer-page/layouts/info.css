@@ -1,0 +1,98 @@
+/*
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+.info-content {
+  text-align: left;
+  margin: 0 auto;
+  padding: 0 20px 0 20px;
+}
+
+.info-content.page {
+  width: 280px;
+  max-width: 100%;
+}
+
+.info-content.name {
+  border-bottom: 1px solid #dedede;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.info-content.title {
+  text-align: center;
+  font-weight: 300;
+  font-size: 25px;
+}
+
+.info-content.content {
+  padding-top: 10px;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.info-content.items {
+  padding-top: 10px;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+.item-icon {
+  width: 20%;
+}
+
+.item-desc {
+  width: 40%
+}
+
+
+.icon-button.gll.item-plus {
+}
+
+.button {
+  display: inline-block;
+  position: relative;
+  width: 120px;
+  height: 32px;
+  line-height: 32px;
+  border-radius: 2px;
+  font-size: 0.9em;
+  background-color: #fff;
+  color: #646464;
+}
+
+.icon-button {
+  position: relative;
+  display: inline-block;
+  width: 56px;
+  height: 56px;
+}
+
+.icon-button > div {
+  margin: 16px;
+  transition: -webkit-transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  color: #00BCD4;
+}
+
+.icon-button:hover > div {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+.icon-button.gll > iron-icon::shadow path {
+  fill: #00BCD4;
+}
+
+.icon-button.gll > paper-ripple {
+  color: #00BCD4;
+}

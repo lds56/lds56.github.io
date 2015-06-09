@@ -69,11 +69,13 @@ Extended Header + List Left + Card Over Toolbar
          <!--List -->
         <paper-menu  id="menuContent" class="list" on-iron-activate="_listTap" selected="{{_selectMenu}}">
 
-          <template is="dom-repeat" items="{{list}}">
+          <template is="dom-repeat" items="{{list}}" id="postAndDemo">
             <paper-item>
               <div class="sub-title">{{item}}</div>
             </paper-item>
           </template>
+
+
 
         </paper-menu>
 
@@ -151,36 +153,41 @@ Extended Header + List Left + Card Over Toolbar
         this.updateStyles();
       },
 
-      _isMenuSelected: function(_selectMenu) {
-        var cnt = document.getElementById('postContent');
+      _pageSwitch: function(parentId, newTag) {
+        var cnt = document.getElementById(parentId);
         var child = cnt.childNodes[1];
-        var newChild = document.createElement('post-' + _selectMenu);
+        var newChild = document.createElement(newTag);
 
         child.removeIt();
         setTimeout(function() {
           cnt.replaceChild(newChild, child);
         }, 400);
         newChild.showIt();
+      },
 
+      _isMenuSelected: function(_selectMenu) {
+        this._pageSwitch('postContent', 'post-' + _selectMenu);
         console.log(_selectMenu);
       },
 
       _isTabSelected: function(_selectTab) {
         var hosT = this;
-        $( "#menuContent" ).animate( {opacity: 0} , function() {
+        $( "#menuContent" ).animate( {opacity: 0} , 300, function() {
           console.log(_selectTab);
-          if (_selectTab == 0) hosT.set('list', note_list);
-          else if (_selectTab == 1) hosT.set('list', demo_list);
-          $("#menuContent").animate({opacity: 1});
+          if (_selectTab == 0) {
+            hosT.set('list', note_list);
+            hosT._pageSwitch('postContent', 'post-0');
+          }
+          else if (_selectTab == 1) {
+            hosT.set('list', demo_list);
+            hosT._pageSwitch('postContent', 'demo-0');
+          }
+          else if (_selectTab == 2) {
+
+          }
+          $("#menuContent").animate({opacity: 1}, 300);
         });
-        /*var xx = 1;
-        console.log(_selectTab);
-        $( "#menuContent" ).animate( {opacity: 0}, function() {
-          if (xx == 0) _setList(note_list);
-          else if (xx == 1) Polymer._setList(demo_list);
-          console.log(xx);
-          $( "#menuContent" ).animate( {opacity: 1} );
-        });*/
+
       },
 
       _setList: function(el) {

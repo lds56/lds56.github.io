@@ -19,6 +19,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
   <link rel="import" href="../../iron-icons/iron-icons.html">
+  <link rel="import" href="../../paper-item/paper-item.html">
   <link rel="import" href="../paper-ripple.html">
   <link rel="import" href="../../paper-styles/classes/typography.html">
   <link rel="import" href="../../iron-icon/iron-icon.html">
@@ -95,28 +96,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       height: 56px;
     }
 
-    .icon-button > iron-icon {
+    .icon-button > div {
       margin: 16px;
       transition: -webkit-transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      color: #00BCD4;
     }
 
-    .icon-button:hover > iron-icon {
+    .icon-button:hover > div {
       -webkit-transform: scale(1.2);
       transform: scale(1.2);
     }
 
-    .icon-button > paper-ripple {
-      overflow: hidden;
-      color: #646464;
+    .icon-button.gll > iron-icon::shadow path {
+      fill: #00BCD4;
     }
 
-    .icon-button.red > iron-icon::shadow path {
-      fill: #db4437;
-    }
-
-    .icon-button.red > paper-ripple {
-      color: #db4437;
+    .icon-button.gll > paper-ripple {
+      color: #00BCD4;
     }
 
     .icon-button.blue > iron-icon::shadow path {
@@ -281,15 +279,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <div class="button raised grey narrow label-red">
       <div class="center" fit>+1</div>
-      <paper-ripple></paper-ripple>
+      <paper-ripple class="circle" recenters></paper-ripple>
     </div>
 
   </section>
 
   <section>
 
-    <div class="icon-button">
-      <iron-icon icon="menu"></iron-icon>
+    <div class="icon-button gll">
+      <div class="center" fit>+1</div>
       <paper-ripple class="circle" recenters></paper-ripple>
     </div>
 
@@ -391,7 +389,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       <div class="button">
         <div class="center" fit>DECLINE</div>
-        <paper-rippl></paper-ripple>
+        <paper-ripple></paper-ripple>
       </div>
 
     </div>

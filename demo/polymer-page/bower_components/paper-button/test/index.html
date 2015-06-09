@@ -8,30 +8,18 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
-
 <html>
 <head>
-
-  <title>LDS' Page</title>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-
-  <link rel="import" href="layouts/x-app-info.html">
-
-  <style>
-
-    body {
-      font-family: 'Roboto', sans-serif;
-    }
-
-  </style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>paper-button tests</title>
+  <script src="../../web-component-tester/browser.js"></script>
 </head>
 <body>
-
-  <x-app></x-app>
-
+  <script>
+    WCT.loadSuites([
+      'paper-button.html'
+    ]);
+  </script>
 </body>
 </html>

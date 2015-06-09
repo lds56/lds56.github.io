@@ -9,6 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../bower_components/iron-image/iron-image.html">
 
 <link rel="import" href="../bower_components/paper-drawer-panel/paper-drawer-panel.html">
@@ -18,7 +19,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-menu/paper-menu.html">
 <link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/paper-ripple/paper-ripple.html">
 
+
+<link rel="import" href="../bower_components/iron-iconset-svg/iron-iconset-svg.html">
+
+<link rel="import" href="../utils/mdi.html">
 
 <link rel="import" href="../posts/post-0.html">
 <link rel="import" href="../posts/post-1.html">
@@ -45,6 +51,8 @@ Extended Header + List Left + Card Over Toolbar
 
   <link rel="import" type="css" href="x-app.css">
 
+
+
   <template>
 
     <paper-drawer-panel id="drawerPanel" responsive-width="1024px" drawer-width="{{drawerWidth}}">
@@ -63,41 +71,29 @@ Extended Header + List Left + Card Over Toolbar
             </paper-tabs>
         </paper-toolbar>
 
-        <!-- List -->
-        <!--<paper-menu class="list" on-iron-activate="_listTap" selected="{{_selectMenu}}">-->
-          <!--<paper-item>-->
-            <!--<div class="sub-title">Note0</div>-->
-            <!--&lt;!&ndash;paper-item-body two-line style="-->
-              <!--width: 100%;-->
-            <!--">-->
-              <!--<div class="sub-title">Show your status</div>-->
-              <!--<div secondary class="sub-title date-title">2015/5/10 13:43</div>-->
-            <!--</paper-item-body&ndash;&gt;-->
-          <!--</paper-item>-->
-          <!--<paper-item>-->
-            <!--<div class="sub-title">Note1</div>-->
-          <!--</paper-item>-->
-          <!--<paper-item>-->
-            <!--<div class="sub-title">Note2</div>-->
-          <!--</paper-item>-->
-          <!--<paper-item></paper-item>-->
-          <!--<paper-item></paper-item>-->
-          <!--<paper-item></paper-item>-->
-          <!--<paper-item></paper-item>-->
-          <!--<paper-item></paper-item>-->
-          <!--<paper-item></paper-item>-->
-          <!--<paper-item></paper-item>-->
-          <!--<paper-item></paper-item>-->
-          <!--<paper-item></paper-item>-->
-          <!--<paper-item></paper-item>-->
-          <!--<paper-item></paper-item>-->
-          <!--<paper-item></paper-item>-->
-          <!--<paper-item></paper-item>-->
-          <!--<paper-item></paper-item>-->
-          <!--<paper-item></paper-item>-->
-          <!--<paper-item></paper-item>-->
-          <!--<paper-item></paper-item>-->
-        <!--</paper-menu>-->
+
+        <div class="info-content">
+          <!--<div class="info-content title">Hello, this is</div>-->
+          <!--<iron-image class="info-content page" src="../images/page-info.png"></iron-image>-->
+          <div class="info-content name">
+            All about Riri Chan-Chan
+          </div>
+          <div class="info-content content">
+            I'm a lover of
+          </div>
+          <div  class="info-content items" >
+          <template is="dom-repeat" items="{{hobbies}}" id="lover">
+            <div class="info-content item">
+              <iron-icon class="item-icon" icon={{item.icon}}></iron-icon>
+              <span class="item-desc">{{item.name}}</span>
+            </div>
+            </template>
+            </div>
+          </div>
+
+        </div>
+
+
 
       </paper-header-panel>
 
@@ -110,16 +106,14 @@ Extended Header + List Left + Card Over Toolbar
 
         <div class="content" id="postContent">
 
-          <!--<iron-image class="background" sizing="cover" src="../images/background.jpg"></iron-image>-->
-
-            <!--<post-1></post-1>-->
-
           <paper-material elevation="3" class="paper-info">
-            <iron-image class="background" sizing="cover" src="../images/background.jpg"></iron-image>
+            <div>
+              <iron-image class="background" src="../images/background.jpg"></iron-image>
+            </div>
           </paper-material>
 
           <paper-material elevation="3" class="paper-info">
-            <iron-image class="background" sizing="cover" src="../images/page1.png"></iron-image>
+            <iron-image class="background" src="../images/page-1.png"></iron-image>
             <div class="img-content">hi</div>
           </paper-material>
         </div>
@@ -138,6 +132,44 @@ Extended Header + List Left + Card Over Toolbar
 
       is: 'x-app',
 
+      ready: function() {
+        this.hobbies = [
+          {icon: 'mdi:android', name: 'Android'},
+          {icon: 'mdi:amazon', name: 'Amazon'},
+          {icon: 'mdi:stackoverflow', name: 'stackoverflow'},
+          {icon: 'mdi:apple', name: 'Apple'},
+          {icon: 'mdi:github-circle', name: 'GitHub'},
+          {icon: 'mdi:google', name: 'Google'},
+          {icon: 'mdi:google-chrome', name: 'Chrome'},
+          {icon: 'mdi:google-drive', name: 'Google Drive'},
+          {icon: 'mdi:gmail', name: 'Gmail'},
+          {icon: 'mdi:twitter', name: 'Twitter'},
+          {icon: 'mdi:ubuntu', name: 'Ubuntu'},
+          {icon: 'mdi:pocket', name: 'Pocket'},
+          {icon: 'mdi:polymer', name: 'Polymer'},
+          {icon: 'mdi:rss-box', name: 'RSS'},
+          {icon: 'mdi:wikipedia', name: 'Wikipedia'},
+          {icon: 'mdi:firefox', name: 'Firefox'},
+          {icon: 'mdi:hangouts', name: 'Hangouts'},
+          {icon: 'mdi:laptop-windows', name: 'MacBook'},
+
+          {icon: 'mdi:language-html5', name: 'Html5'},
+          {icon: 'mdi:language-python', name: 'Python'},
+
+          {icon: 'mdi:clippy', name: 'Clippy'},
+          {icon: 'mdi:send', name: 'Paper plane'},
+          {icon: 'mdi:album', name: 'Album'},
+          {icon: 'mdi:battery', name: 'Full battery'},
+          {icon: 'mdi:guitar-pick', name: 'Guitar pick'},
+          {icon: 'mdi:headphones', name: 'Headphone'},
+          {icon: 'mdi:beta', name: 'Beta'},
+          {icon: 'mdi:dice', name: 'Dice'},
+          {icon: 'mdi:emoticon-poop', name: 'Smiling poop'},
+          {icon: 'mdi:bug', name: 'No bugs'},
+          {icon: 'mdi:recycle', name: 'Recycle'},
+
+        ];
+      },
 
       properties: {
 
@@ -169,13 +201,6 @@ Extended Header + List Left + Card Over Toolbar
       },
 
       _isMenuSelected: function(_selectMenu) {
-        //var newChild = "<post-" + _selectMenu + "></post-" + _selectMenu + ">";
-        //console.log($("#postContent").children().first());
-        //$("#postContent").children().first().slideUp('slow', function(){ $(this).remove(); });
-        //$("#postContent").children().first().replaceWith(newChild);
-
-          //document.getElementById("postContent").animate();
-        //var node = document.querySelector('post-1');
         var cnt = document.getElementById('postContent');
         var child = cnt.childNodes[1];
         var newChild = document.createElement('post-' + _selectMenu);
@@ -184,7 +209,6 @@ Extended Header + List Left + Card Over Toolbar
         setTimeout(function() {
           cnt.replaceChild(newChild, child);
         }, 400);
-        //while (!child.isOver);
         newChild.showIt();
 
         console.log(_selectMenu);
