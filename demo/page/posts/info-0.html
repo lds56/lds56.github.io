@@ -1,0 +1,104 @@
+
+
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animation-runner-behavior.html">
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+
+<link rel="import" href="../utils/slide-up-show-animation.html">
+<link rel="import" href="../utils/slide-down-remove-animation.html">
+
+
+
+<dom-module id="info-0">
+
+    <link rel="import" type="css" href="infos.css" />
+
+    <!--<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>-->
+
+    <template>
+
+
+        <template is="dom-repeat" items="{{infos}}">
+            <paper-material id$="{{item}}" elevation="3">oo</paper-material>
+        </template>
+
+        <iron-media-query query="(max-width: 780px)" query-matches="{{_isMobile}}"></iron-media-query>
+
+    </template>
+
+</dom-module>
+
+
+<script>
+
+    Polymer({
+
+        is: 'info-0',
+
+        ready: function() {
+          this.infos = ['oop'];
+        },
+
+        behaviors: [
+            Polymer.NeonAnimationRunnerBehavior
+        ],
+
+        properties: {
+
+            _isMobile: {
+                type: Boolean,
+                observer: '_isMobileChanged'
+            },
+
+            animationConfig: {
+                type: Object,
+                value: function() {
+                    return {
+                        'entry': [{
+                            // provided by neon-animation/animations/scale-down-animation.html
+                            name: 'slide-up-show-animation',
+                            node: this,
+                            timing: {delay: 100, duration: 900}
+                        }],
+                        'exit': [{
+                            name: 'slide-down-remove-animation',
+                            node: this,
+                            time: {duration: 800}
+                        }]
+                    }
+                }
+            }
+
+        },
+
+        listeners: {
+            // this event is fired when the animation finishes
+            'neon-animation-finish': '_onNeonAnimationFinish'
+        },
+
+        showIt: function() {
+            // run scale-down-animation
+            console.log('show animation start!');
+            this.playAnimation('entry');
+        },
+
+        removeIt: function() {
+            // run scale-down-animation
+            console.log('exit animation start!');
+            this.playAnimation('exit');
+        },
+
+        _onNeonAnimationFinish: function() {
+            console.log('animation done!');
+        },
+
+
+        _isMobileChanged: function(isMobile) {
+            this.mdBody = isMobile ? 'md-body' : 'md-body with-margin';
+        }
+
+    });
+
+</script>

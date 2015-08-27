@@ -1,0 +1,230 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
+
+<link rel="import" href="../bower_components/paper-drawer-panel/paper-drawer-panel.html">
+<link rel="import" href="../bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+
+<link rel="import" href="../posts/post-0.html">
+<link rel="import" href="../posts/post-1.html">
+<link rel="import" href="../posts/post-2.html">
+
+<link rel="import" href="../posts/demo-0.html">
+<link rel="import" href="../posts/demo-1.html">
+
+<link rel="import" href="../posts/info-0.html">
+<link rel="import" href="../posts/info-1.html">
+
+<link rel="import" href="menu-list-0.html">
+<link rel="import" href="menu-list-1.html">
+
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+
+<script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+<!--
+
+Extended Header + List Left + Card Over Toolbar
+
+ -->
+<dom-module id="x-app">
+
+  <style>
+
+    :host {
+      display: inline-block;
+    }
+
+  </style>
+
+  <link rel="import" type="css" href="x-app.css">
+
+  <template>
+
+    <paper-drawer-panel id="drawerPanel" responsive-width="1024px" drawer-width="{{drawerWidth}}">
+
+      <paper-header-panel class="list-panel" drawer mode="waterfall">
+
+        <paper-toolbar class="tall">
+          <iron-image class="profile top" sizing="contain" src="../images/profile.png"></iron-image>
+          <!--<div title class="bottom">LDS' Page</div>-->
+            <paper-tabs class="bottom self-end" selected="{{_selectTab}}" style="width: 100%;">
+              <template is="dom-repeat" items="{{tabs}}">
+                <paper-tab>{{item}}</paper-tab>
+              </template>
+            </paper-tabs>
+        </paper-toolbar>
+
+        <paper-menu  id="menuContent" class="list" on-iron-activate="_listTap" selected="{{_selectMenu}}">
+
+          <template is="dom-repeat" items="{{list}}" id="postAndDemo">
+            <paper-item>
+              <div class="sub-title">{{item}}</div>
+            </paper-item>
+          </template>
+
+
+        </paper-menu>
+
+      </paper-header-panel>
+
+      <paper-header-panel class="main-panel" main mode="{{mainMode}}" >
+
+        <!-- Main Toolbar -->
+        <paper-toolbar class$="{{toolbarClass}}">
+          <paper-icon-button icon="arrow-back" paper-drawer-toggle></paper-icon-button>
+        </paper-toolbar>
+
+
+        <div class="content" id="postContent" data-view$="{{viewMode}}">
+
+            <info-1></info-1>
+
+
+          <div id="fabs" on-click="_fabClick">
+            <paper-fab id="create_fab" class="octo-fab yellow blk" icon="create" data-view$="{{viewMode}}"></paper-fab>
+            <paper-fab id="done_fab" class="octo-fab green" icon="done" data-view$="{{viewMode}}" style="display: none"></paper-fab>
+          </div>
+
+        </div>
+
+
+
+      </paper-header-panel>
+
+    </paper-drawer-panel>
+
+    <iron-media-query query="(max-width: 780px)" query-matches="{{_isMobile}}"></iron-media-query>
+
+  </template>
+
+  <script>
+    var note_list = ['Note++', 'note2', 'note1', 'note0'];
+    var demo_list = ['demo1', 'demo0'];
+    var info_list = ['info1', 'info0'];
+    var tab_list = ['Post', 'Demo', 'Info'];
+    var a_dist = {'post': note_list, 'demo': demo_list, 'info': info_list};
+
+    Polymer({
+
+      is: 'x-app',
+
+
+      properties: {
+
+        _isMobile: {
+          type: Boolean,
+          observer: '_isMobileChanged'
+        },
+
+        _selectMenu: {
+          type: Number,
+          observer: '_isMenuSelected'
+        },
+
+        _selectTab: {
+          type: Number,
+          observer: '_isTabSelected'
+        }
+
+      },
+
+      ready: function () {
+        this.list = note_list;
+        this.list2 = demo_list;
+        this.tabs = tab_list;
+        this.tabPrefix = 'post';
+      },
+
+      /*behaviors: [
+        Polymer.IronMenuBehavior
+      ],*/
+
+      _listTap: function() {
+        this.$.drawerPanel.closeDrawer();
+      },
+
+      _isMobileChanged: function(isMobile) {
+        this.mainMode = isMobile ? 'standard' : 'cover';
+        this.drawerWidth = isMobile ? '100%' : '320px';
+        this.toolbarClass = isMobile ? '' : 'tall';
+        this.viewMode = isMobile ? 'narrow' : 'wide';
+        this.updateStyles();
+      },
+
+      _pageSwitch: function(parentId, newTag) {
+        var cnt = document.getElementById(parentId);
+        var child = cnt.childNodes[1];
+        var newChild = document.createElement(newTag);
+
+        child.removeIt();
+        setTimeout(function() {
+          cnt.replaceChild(newChild, child);
+        }, 400);
+        newChild.showIt();
+      },
+
+      _isMenuSelected: function(_selectMenu) {
+        console.log(_selectMenu);
+        this._pageSwitch('postContent', this.tabPrefix + '-' + (a_dist[this.tabPrefix].length - _selectMenu - 1));
+      },
+
+      _isTabSelected: function(_selectTab) {
+        var hosT = this;
+        $( "#menuContent" ).animate( {opacity: 0} , 300, function() {
+          console.log(_selectTab);
+          if (_selectTab == 0) {
+            hosT.set('list', note_list);
+            hosT._pageSwitch('postContent', 'post-0');
+            hosT.tabPrefix = 'post';
+          }
+          else if (_selectTab == 1) {
+            hosT.set('list', demo_list);
+            hosT._pageSwitch('postContent', 'demo-0');
+            hosT.tabPrefix = 'demo';
+          }
+          else if (_selectTab == 2) {
+            hosT.set('list', info_list);
+            hosT._pageSwitch('postContent', 'info-0');
+            hosT.tabPrefix = 'info';
+          }
+          $("#menuContent").animate({opacity: 1}, 300);
+        });
+
+      },
+
+      _setList: function(el) {
+        this.set('list', el);
+      },
+
+      _fabClick: function(e) {
+        var createFab = $('#create_fab');
+        var doneFab = $('#done_fab');
+        var speed = 300;
+        if (createFab.css('display') == 'none') {
+          createFab.fadeIn(speed);
+          doneFab.fadeOut(speed);
+        } else if (doneFab.css('display') == 'none') {
+          createFab.fadeOut(speed);
+          doneFab.fadeIn(speed);
+        }
+      }
+    });
+
+  </script>
+
+</dom-module>

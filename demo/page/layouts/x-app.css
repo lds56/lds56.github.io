@@ -1,0 +1,255 @@
+/*
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+:host {
+  display: block;
+}
+
+.main-panel {
+  background-color: #eee;
+}
+
+paper-toolbar {
+  background-color: #00BCD4;
+}
+
+.list {
+  padding: 0;
+  border-right: 1px solid #ccc;
+}
+
+.list paper-item {
+  height: 80px;
+  border-bottom: 1px solid #dedede;
+  background-color: #fafafa;
+}
+
+.main-panel[mode=cover] .content {
+  padding: 64px 64px 0 4px;
+}
+
+.main-panel {
+  --paper-header-panel-cover-container: {
+    left: 64px;
+  };
+}
+
+paper-material {
+  background-color: #fff;
+  border-radius: 3px;
+}
+
+.main-panel[mode=standard] paper-material {
+  margin: 0 auto 16px auto;
+}
+
+.main-panel[mode=cover] paper-material {
+  max-width: 720px;
+  margin: 32px auto;
+}
+
+.sub-title {
+  margin-left: 56px;
+}
+
+.sub-title.date-title {
+  text-align: right;
+  font-size: 10px;
+}
+
+.profile {
+  width:100px;
+  height:100px;
+  margin-top: 81px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.background {
+  margin: 0 auto 0 auto;
+  display: block;
+}
+
+.img-content {
+  padding: 30px 0 30px 0;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 300;
+}
+
+.paper-menu > .iron-selected {
+  color: #00BCD4;
+}
+
+.paper-info {
+  border-radius: 2px;
+}
+
+#wrap[data-view=wide] {
+  width:100%;
+  padding-right: 56px;
+}
+
+#left_col[data-view=wide] {
+  float:left;
+  width:48%;
+}
+
+#right_col[data-view=wide] {
+  float:right;
+  width:48%;
+}
+
+#wrap[data-view=narrow] {
+}
+
+#left_col[data-view=narrow] {
+}
+
+#right_col[data-view=narrow] {
+}
+
+.yellow.octo-fab[data-view=wide] {
+  position: fixed;
+  right:28px;
+  top:164px;
+  margin:0;
+  padding:0;
+}
+
+.yellow.octo-fab[data-view=narrow] {
+  position: fixed;
+  right:28px;
+  bottom:28px;
+  margin:0;
+  padding:0;
+}
+
+paper-fab.yellow {
+  --paper-fab-background: #F3F665;
+}
+
+.info-content {
+  text-align: left;
+  margin: 0 auto;
+  padding: 0 20px 0 20px;
+}
+
+.info-content.page {
+  width: 280px;
+  max-width: 100%;
+}
+
+.info-content.name {
+  border-bottom: 1px solid #dedede;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.info-content.title {
+  text-align: center;
+  font-weight: 300;
+  font-size: 25px;
+}
+
+.info-content.content {
+  padding-top: 20px;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+.info-content.items {
+  padding-top: 10px;
+  font-weight: 300;
+  font-size: 16px;
+  width: 270px;
+}
+
+.info-content.item {
+  height: 40px;
+  display: block;
+ }
+
+.item-icon {
+  margin-top: 0;
+  width: 24px;
+  height: 24px;
+  float: right;
+  margin-right: 7px;
+}
+
+.item-desc {
+  float: left;
+  margin-left: 5px;
+}
+
+.bottom.header {
+  width: 85%;
+  margin-top: 85px;
+}
+
+.header-text {
+  font-size: 30px;
+  font-weight: 300;
+  color: #000;
+  margin: 24px;
+}
+
+.below-toolbar {
+  margin-top: 128px;
+}
+
+.below-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#postContent[data-view=wide] {
+  margin-right: 56px;
+}
+
+#postContent[data-view=narrow] {
+}
+
+.octo-fab[data-view=wide] {
+  position: fixed;
+  right:28px;
+  top:164px;
+  margin:0;
+  padding:0;
+}
+
+.octo-fab[data-view=narrow] {
+  position: fixed;
+  right:28px;
+  bottom:28px;
+  margin:0;
+  padding:0;
+}
+
+paper-fab.yellow {
+  --paper-fab-background: #F3F665;
+}
+
+paper-fab.red {
+  --paper-fab-background: var(--paper-red-400);
+}
+
+paper-fab.green {
+  --paper-fab-background: var(--paper-green-400);
+}
+
+paper-fab.blk {
+  color: #000;
+}

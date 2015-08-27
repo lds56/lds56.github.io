@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <body>
-<p>Hello world</p>
+  <!--p>Hello worldq</p-->
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
-var width = 960,
-    height = 500;
+var width = 960;
+    height = 700;
 
 var nodes = d3.range(200).map(function() { return {radius: Math.random() * 12 + 4}; }),
     root = nodes[0],
@@ -33,7 +33,7 @@ svg.selectAll("circle")
     .data(nodes.slice(1))
   .enter().append("circle")
     .attr("r", function(d) { return d.radius; })
-    .style("fill", function(d, i) { return color(i % 3); });
+    .style("fill", function(d, i) { return color((d.radius) % 3); });
 
 force.on("tick", function(e) {
   var q = d3.geom.quadtree(nodes),
