@@ -1,0 +1,59 @@
+---
+layout: default
+---
+
+<noscript>
+	<style>
+
+		article .footnotes {
+			display: block;
+		}
+
+	</style>
+</noscript>
+
+<aside class="logo">
+
+  {% assign avatar_dir = 'default' %}
+  {% for static_file in site.static_files %}
+      {% if static_file.path contains page.title %}
+          {% assign avatar_dir = page.title %}
+      {% endif %}
+  {% endfor %}
+  
+  	<a href="">
+		 <img src="{{site.baseurl}}/assets/avatars/{{ avatar_dir }}/avatar.png" class="gravatar">
+	</a>
+	<span class="logo-prompt">{{ page.avatar_desc | default: page.title }}</span>
+
+</aside>
+
+
+<article>
+
+	<div class="center">
+		<h1>{{ page.title }}</h1>
+		<time>{{ page.date | date: '%B %-d, %Y' }}</time>
+
+		<div>
+		  <a href="{{ site.baseurl }}/categories/{{ page.category }}" class="category">
+			{{ page.category }}
+		  </a>
+		  {% for tag in page.tags  %}
+		  <a href="{{ site.baseurl }}/tags/{{ tag }}" class="tag">{{ tag }}</a>
+		  {% endfor %}
+		</div>
+
+	</div>
+	
+	<div class="divider"></div>
+
+	{{ content }}
+
+</article>
+
+<div class="back">
+  <a href="{{site.baseurl}}/">
+	<!--img src="{{site.baseurl}}/assets/triangle-grey.png"-->
+  </a>
+</div>

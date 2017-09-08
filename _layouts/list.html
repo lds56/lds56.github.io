@@ -1,0 +1,64 @@
+---
+layout: default
+---
+
+
+<aside class="logo">
+
+  {% if page.type == 'index' %}
+     {% assign link = site.baseurl | append: '/about' %}
+     {% assign style = '' %}
+  {% else %}
+     {% assign link = '' %}
+     {% assign style = 'display: inline-block' %}
+  {% endif %}
+  
+  	<a href="{{ link }}">
+		 <img src="{{site.baseurl}}/assets/avatars/{{ page.type }}/avatar.png" class="gravatar">
+	</a>
+	<span class="logo-prompt" style="{{ style }}">{{ page.val }}</span>
+
+</aside>
+
+
+<section>
+
+
+  <div class="divider"></div>
+
+	<ul>
+
+	{% for post in site.posts %}
+	
+	   {% unless page.type == 'index' %}
+	
+           {% unless page.type == 'tag' and post.tags contains page.val%}
+
+	           {% unless page.type == 'category' and post.category == page.val %}
+            	    {% continue %}
+               {% endunless %}
+ 
+	       {% endunless %}
+
+	   {% endunless %}
+	
+		<li>
+			<div class="post-date">
+				<span>{{ post.date | date: "%b %d, %Y" }}</span>
+			</div>
+			<div class="title">
+				<a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+			</div>
+		</li>
+
+		{% endfor %}
+
+	</ul>
+</section>
+
+{% unless page.type == 'index'  %}
+<div class="back">
+  <a href="{{site.baseurl}}/">
+  </a>
+</div>
+{% endunless %}
